@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    text-align: center;
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    color: white;
+}
+
+/* Sections */
+.section {
+    display: none;
+    min-height: 100vh;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.active {
+    display: block;
+}
+
+/* Hearts Animation */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    color: red;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Images */
+.main-img {
+    width: 85%;
+    max-width: 320px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* Buttons */
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: #ff4e50;
+    color: white;
+}
+
+#noBtn {
+    background: white;
+    color: red;
+    position: absolute;
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+</style>
+</head>
+
+<body>
+
+<!-- ❤️ SECTION 1 -->
+<div class="section active" id="page1">
+    <h1>Will You Be My Valentine? 💖</h1>
+    <img src="isha.jpeg" class="main-img">
+    
+    <div style="margin-top:30px;">
+        <button id="yesBtn">Yes 💖</button>
+        <button id="noBtn">No 😜</button>
+    </div>
+</div>
+
+<!-- ❤️ SECTION 2 -->
+<div class="section" id="page2" style="background: linear-gradient(to right, #ff758c, #ff7eb3);">
+    <h1>You Said YES! 😍</h1>
+    <p style="margin-top:15px;">I Love You So Much ❤️</p>
+    <button id="surpriseBtn" style="margin-top:30px;">Click For Surprise 🎁</button>
+</div>
+
+<!-- ❤️ SECTION 3 -->
+<div class="section" id="page3" style="background:#ffdde1; color:#ff4e50;">
+    <h1>Our Beautiful Memories ❤️</h1>
+
+    <div class="gallery">
+        <img src="isha1.jpeg">
+        <img src="isha2.jpeg">
+        <img src="isha3.jpeg">
+        <img src="isha4.jpeg">
+        <img src="isha5.jpeg">
+        <img src="isha6.jpeg">
+    </div>
+</div>
+
+<script>
+
+/* Floating Hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 300);
+
+/* Move NO Button */
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.left = Math.random() * 80 + "vw";
+    noBtn.style.top = Math.random() * 80 + "vh";
+});
+
+/* YES Button */
+document.getElementById("yesBtn").onclick = function() {
+    document.getElementById("page1").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
+};
+
+/* Surprise Button */
+document.getElementById("surpriseBtn").onclick = function() {
+    document.getElementById("page2").classList.remove("active");
+    document.getElementById("page3").classList.add("active");
+};
+
+</script>
+
+</body>
+</html>
